@@ -41,7 +41,7 @@ void spotifywm_init(void) {
 #define INTERCEPT(ReturnType, SymbolName, ...) \
 		typedef ReturnType (*TYPE_NAME(SymbolName))(__VA_ARGS__); \
 	static void * const BASE_NAME(SymbolName) = dlsym(RTLD_NEXT, STR(SymbolName)); \
-	ReturnType SymbolName(__VA_ARGS__)
+	extern "C" ReturnType SymbolName(__VA_ARGS__)
 #define BASE(SymbolName) ((TYPE_NAME(SymbolName))BASE_NAME(SymbolName))
 
 INTERCEPT(int, XMapWindow,
