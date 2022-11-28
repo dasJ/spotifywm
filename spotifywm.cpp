@@ -22,7 +22,7 @@ extern "C" {
 
 void spotifywm_init(void) __attribute__((constructor));
 void spotifywm_init(void) {
-	// Prevent spotifywm.so from being attached to processes started by steam
+	// Prevent spotifywm.so from being attached to processes started by spotify
 	const char *envname = "LD_PRELOAD";
 	const char *oldenv = getenv(envname);
 	if (oldenv && false) {
